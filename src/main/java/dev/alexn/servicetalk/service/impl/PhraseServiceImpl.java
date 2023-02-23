@@ -1,9 +1,9 @@
 package dev.alexn.servicetalk.service.impl;
 
-import dev.alexn.servicetalk.domen.response.ErrorResponse;
-import dev.alexn.servicetalk.domen.response.Error;
+import dev.alexn.servicetalk.domen.constant.Code;
 import dev.alexn.servicetalk.domen.response.Response;
 import dev.alexn.servicetalk.domen.response.SuccessResponse;
+import dev.alexn.servicetalk.domen.response.exception.CommonException;
 import dev.alexn.servicetalk.service.PhraseService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,8 +22,10 @@ public class PhraseServiceImpl implements PhraseService {
     public ResponseEntity<Response> test() {
 
 
-        return new ResponseEntity<>(SuccessResponse.builder().data("SuccessResponse").build(),HttpStatus.OK);
+//        return new ResponseEntity<>(SuccessResponse.builder().data("SuccessResponse").build(),HttpStatus.OK);
 //        return new ResponseEntity<>(ErrorResponse.builder().error(Error.builder().code("VALIDATION_ERROR")
 //                .message("Ошибка валидации").build()).build(), HttpStatus.BAD_REQUEST);
+
+        throw CommonException.builder().code(Code.TEST).message("Test").httpStatus(HttpStatus.BAD_REQUEST).build();
     }
 }
